@@ -12,3 +12,4 @@ Debug/*
 *.dSYM
 *.a
 *.dylib
+*.out

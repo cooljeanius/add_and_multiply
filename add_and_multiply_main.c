@@ -20,7 +20,7 @@ void adder(int input1[], int input2[], int output[]) {
 		}
 	}
 	j--; // Put j back down to the array size
-	while (output[j] == '\0') // Skip past all the \0s (with j-- below)
+	while (output[j] == 0) // Skip past all the 0s (with j-- below)
 	{
 		j--;
 	}
@@ -35,24 +35,39 @@ void adder(int input1[], int input2[], int output[]) {
 /* 
  * Multiplier: Multiplies two numbers together and prints the result. Doesn't return anything.
  */
-/*void multiplier(int input1[], int input2[], int output[]); // Prototype
-void multiplier(int input1[], int input2[], int output[]) {
-	int j = 0; // declare loop-counter
-	int k = 0; // we're going to need a second loop-counter because it's multiplication
+void multiplier(int input1[], int input2[], int output[], int arglen1, int arglen2); // Prototype
+void multiplier(int input1[], int input2[], int output[], int arglen1, int arglen2) {
+	int j = 0; // declare loop-counter (for the first factor)
+	int k = 0; // we're going to need a second loop-counter because it's multiplication (k is for the second factor)
+	int temp = 0; // for carrying
 	// malloc(100000); // this takes some extra processing power, unfortunately I don't know how to use malloc properly, so this will stay commented out for now
-	for (k = 0; k < LENGTH; k++) { // need a separate loop because in multiplication, each digit is multiplied by each other, not just the one in the same place like in addition
-		for (j = 0; j < LENGTH; j++) // Go through entire output array
+	// output[j] = 0; // clear out
+	for (k = 0; k < (LENGTH - 1); k++) { // need a separate loop because in multiplication, each digit is multiplied by each other, not just the one in the same place like in addition
+		for (j = 0; j < (LENGTH - 1); j++) // Go through entire output array
 		{
-			output[j+(k-1)] = (output[j] + input1[j] * input2[k]); // Multiply arrays together (Adding it to itself is just in case there's already something into it due to place value)
-			while (output[j] >= 10) { // handle place-value (changed to a while-loop because multiplication can carry more than just 1)
-				output[j] = output[j] - 10; // Subtract 10 at a time, if there's still more than 10, get it the next time the loop goes around
-				output[j+1]++; // Put into next digit
+			// printf("\n (j + k) (i.e. %i + %i) = %i \n", j, k, (j+k)); // Statement for debugging
+			// printf("\n output[j+k] (i.e. output[%i]) = %i (this digit gets carried) \n", (j+k), output[j+k]); // Statement for debugging
+			temp = output[j+k]; // storing place value in a temp variable so it doesn't interfere 
+			// printf("\n temp = %i \n", temp); // Statement for debugging			
+			output[j+k] = (input1[j] * input2[k]); // Multiply arrays together 
+			// printf("\n input1[%i] * input2[%i] = %i (this is what output[j+k] becomes) \n", j, k, output[j+k]); // Statement for debugging
+			output[j+k] = (temp + output[j+k]); // Adding it to itself is just in case there's already something into it due to place value (splitting it off as a second step for finer-grained debugging)
+			// printf("\n output[j+k] (i.e. output[%i]) = %i (this is adding the carried digit which was held in temp) \n", (j+k), output[j+k]); // Statement for debugging
+			while (output[j+k] >= 10) { // handle place-value (changed to a while-loop because multiplication can carry more than just 1)
+				// printf("\n j = %i	", j); // Statement for debugging
+				output[j+k] = (output[j+k] - 10); // Subtract 10 at a time, if there's still more than 10, get it the next time the loop goes around
+				// printf("		output[j+k] (i.e. output[%i]) = %i   		", (j+k), output[j+k]); // Statement for debugging
+				output[(j+k)+1]++; // Put into next digit
+				// printf("	output[(j+k)+1] (i.e. output[%i]) = %i ", ((j+k)+1), output[(j+k)+1]); // Statement for debugging
 			}
+			// printf("\n"); // extra whitespace
+			// printf("\n output[j] (i.e. output[%i]) = %i \n", j, output[j]); // Statement for debugging
+			// printf("\n output[j+k] (i.e. output[%i]) = %i (this digit gets held) \n", (j+k), output[j+k]); // Statement for debugging
 		}
-		k--; // because we do the same thing with the other loop counter (j)
+		// printf("\n k = %i \n", k); // Statement for debugging
 	}
 	j--; // Put j back down to the array size
-	while (output[j] == '\0') // Skip past all the \0s (with j-- below)
+	while (output[j] == 0) // Skip past all the 0s (with j-- below)
 	{
 		j--;
 	}
@@ -63,7 +78,7 @@ void multiplier(int input1[], int input2[], int output[]) {
 	}
 	printf(" \n "); // I like putting extra whitespace in
 }	
-*/
+
 /*
  * Main: The main function
  */
@@ -98,23 +113,27 @@ int main (int argc, const char * argv[]) { // Convention for declaring main() fr
 	int j = 0; // Initialize loop-counter
 	for (j = 0; j < LENGTH; j++) // goes through each element of MyFirstNumber[]
 	{
-		MyFirstNumber[j] = '\0'; // sets each array element in MyFirstNumber[] to the null character
+		MyFirstNumber[j] = 0; // sets each array element in MyFirstNumber[] to 0
 	}
     int arglen1 = GetNumber((char*)argv[1], (int*)MyFirstNumber); // Get number from string, and length of number as well
 	int MySecondNumber[LENGTH]; // output array for second number
 	for (j = 0; j < LENGTH; j++) // goes through each element of MySecondNumber[]
 	{
-		MySecondNumber[j] = '\0'; // sets each array element in MySecondNumber[] to the null character
+		MySecondNumber[j] = 0; // sets each array element in MySecondNumber[] to 0
 	}
 	int arglen2 = GetNumber((char*)argv[2], (int*)MySecondNumber); // Repeat what we just did with the first number with our second
 	int Answer[LENGTH];
+	for (j = 0; j < LENGTH; j++) // goes through each element of Answer[]
+	{
+		Answer[j] = 0; // sets each array element in Answer[] to 0
+	}
 	if (which_operation == 1) { // if adding,
 		printf("\n %s + %s = ", argv[1], argv[2]);
 		adder(MyFirstNumber, MySecondNumber, Answer); // do adding function
 	} else if (which_operation == 2) { // if multiplying,
 		printf("\n %s x %s = ", argv[1], argv[2]);
-		// multiplier(MyFirstNumber, MySecondNumber, Answer); // do multiplication function
-		printf("\n (multiplication doesn't work yet) \n"); // placeholder
+		multiplier(MyFirstNumber, MySecondNumber, Answer, arglen1, arglen2); // do multiplication function
+		// printf("\n (multiplication doesn't work yet) \n"); // placeholder
 	} else {
 		printf("\n This shouldn't happen. Something must have gone wrong. \n"); // just in case
 	}

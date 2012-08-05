@@ -1,0 +1,53 @@
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 6/14/12               \" DATE 
+.Dt add_and_multiply 1      \" Program name and manual section number 
+.Os Darwin
+.Sh NAME                 \" Section Header - required - don't modify 
+.Nm add_and_multiply
+.\" The following lines are read in generating the apropos(man -k) database. Use only key
+.\" words here as the database is built based on the words here and in the .ND line. 
+.\" Use .Nm macro to designate other names for the documented program.
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm 
+[
+.Ar somenumber
+]
+[
+.Ar someothernumber                 \" Arguments
+]
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+Adds or multiplies two numbers passed as arguments from the command line. The decision of whether to add or multiply is chosen interactively.  
+.\" (At least that's what it's supposed to do)
+.\" .Sh ENVIRONMENT      \" May not be needed
+.\" .Bl -tag -width "ENV_VAR_1" -indent \" ENV_VAR_1 is width of the string ENV_VAR_1
+.\" .It Ev ENV_VAR_1
+.\" Description of ENV_VAR_1
+.\" .It Ev ENV_VAR_2
+.\" Description of ENV_VAR_2
+.\" .El                      
+.Sh FILES                \" File used or created by the topic of the man page
+.It Pa /usr/local/share/man/man1/add_and_multiply.1
+/usr/local/share/man/man1/add_and_multiply.1 
+manpage
+.El                      \" Ends the list
+.\" .Sh DIAGNOSTICS       \" May not be needed
+.\" .Bl -diag
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .El
+.Sh SEE ALSO 
+.\" List links in ascending order by section, alphabetically within a section.
+.\" Please do not reference files that do not exist without filing a bug report
+.Xr add_and_multiply 1 
+.Sh BUGS              \" Document known, unremedied bugs 
+The arrays holding each of the numbers being added or multiplied each only go up to 30 digits. This program has not been tested with adding numbers with more than 30 digits. Also, the output array is the same size as the input arrays, so you might run into trouble if your answer is too big to fit in it.
+
+The program is also unable to handle decimal points correctly (It does give a result, it's just an incorrect one). Same goes with any other non-number characters entered.
+
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
