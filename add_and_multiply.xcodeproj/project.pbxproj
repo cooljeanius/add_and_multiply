@@ -14,6 +14,7 @@
 		A592515515C99C26004A6BB6 /* libgetnumber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A592515315C99C26004A6BB6 /* libgetnumber.a */; };
 		A592523515C9A299004A6BB6 /* libgetnumber.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A592523315C9A299004A6BB6 /* libgetnumber.dylib */; };
 		A592523615C9A299004A6BB6 /* libgetnumber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A592523415C9A299004A6BB6 /* libgetnumber.a */; };
+		A5D7583315D562DC00618C79 /* add_and_multiply_unlinked.c in Sources */ = {isa = PBXBuildFile; fileRef = A5D7582915D5617A00618C79 /* add_and_multiply_unlinked.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		A592523315C9A299004A6BB6 /* libgetnumber.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgetnumber.dylib; path = build/Debug/libgetnumber.dylib; sourceTree = "<group>"; };
 		A592523415C9A299004A6BB6 /* libgetnumber.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgetnumber.a; path = build/Debug/libgetnumber.a; sourceTree = "<group>"; };
 		A5B316BA15CDEA55001B2696 /* add_and_multiply */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = add_and_multiply; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D7582915D5617A00618C79 /* add_and_multiply_unlinked.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = add_and_multiply_unlinked.c; sourceTree = "<group>"; };
+		A5D7582F15D562C800618C79 /* add_and_multiply_unlinked */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = add_and_multiply_unlinked; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* add_and_multiply.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = add_and_multiply.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +53,13 @@
 				A592515515C99C26004A6BB6 /* libgetnumber.a in Frameworks */,
 				A592523515C9A299004A6BB6 /* libgetnumber.dylib in Frameworks */,
 				A592523615C9A299004A6BB6 /* libgetnumber.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5D7582D15D562C800618C79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +82,7 @@
 			children = (
 				A592514E15C99C0F004A6BB6 /* libgetnumber */,
 				08FB7796FE84155DC02AAC07 /* add_and_multiply_main.c */,
+				A5D7582915D5617A00618C79 /* add_and_multiply_unlinked.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -82,6 +93,7 @@
 				A592523315C9A299004A6BB6 /* libgetnumber.dylib */,
 				A592523415C9A299004A6BB6 /* libgetnumber.a */,
 				A5B316BA15CDEA55001B2696 /* add_and_multiply */,
+				A5D7582F15D562C800618C79 /* add_and_multiply_unlinked */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +145,22 @@
 			productReference = A5B316BA15CDEA55001B2696 /* add_and_multiply */;
 			productType = "com.apple.product-type.tool";
 		};
+		A5D7582E15D562C800618C79 /* add_and_multiply_unlinked */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5D7584115D5631E00618C79 /* Build configuration list for PBXNativeTarget "add_and_multiply_unlinked" */;
+			buildPhases = (
+				A5D7582C15D562C800618C79 /* Sources */,
+				A5D7582D15D562C800618C79 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = add_and_multiply_unlinked;
+			productName = add_and_multiply_unlinked;
+			productReference = A5D7582F15D562C800618C79 /* add_and_multiply_unlinked */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -153,6 +181,7 @@
 			projectRoot = "";
 			targets = (
 				8DD76FA90486AB0100D96B5E /* add_and_multiply */,
+				A5D7582E15D562C800618C79 /* add_and_multiply_unlinked */,
 			);
 		};
 /* End PBXProject section */
@@ -164,6 +193,14 @@
 			files = (
 				8DD76FAC0486AB0100D96B5E /* add_and_multiply_main.c in Sources */,
 				A592515115C99C10004A6BB6 /* libgetnumber.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5D7582C15D562C800618C79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5D7583315D562DC00618C79 /* add_and_multiply_unlinked.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +314,36 @@
 			};
 			name = Release;
 		};
+		A5D7583115D562CB00618C79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = add_and_multiply_unlinked;
+			};
+			name = Debug;
+		};
+		A5D7583215D562CB00618C79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = add_and_multiply_unlinked;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -294,6 +361,15 @@
 			buildConfigurations = (
 				1DEB928A08733DD80010E9CD /* Debug */,
 				1DEB928B08733DD80010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5D7584115D5631E00618C79 /* Build configuration list for PBXNativeTarget "add_and_multiply_unlinked" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5D7583115D562CB00618C79 /* Debug */,
+				A5D7583215D562CB00618C79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
